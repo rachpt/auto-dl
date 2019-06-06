@@ -22,9 +22,9 @@ null_path="/dev/qb/"
 # null file
 [[ -c "${null_path%/}/$torrent" ]] || {
     debug_func "需要输入密码创建特殊文件！！！"
-    [[ -d $null_path ]] || sudo mkdir /dev/qb
+    [[ -d $null_path ]] || sudo mkdir "$null_path"
     echo '请输入当前用户密码！'
-    sudo mknod "${null_path%/}/$torrent" -c 1 3
+    sudo mknod "${null_path%/}/$torrent" c 1 3
     sudo chmod 777 "${null_path%/}/$torrent"
 }
 #--------------------------------------#
