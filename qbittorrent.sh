@@ -110,7 +110,7 @@ qb_add_torrent_file() {
   qbit_webui_cookie
   # add file
   debug_func 'qb:add-from-file'  #----debug---
-  http --ignore-stdin -f POST "$qb_add" skip_checking=false root_folder=false \
+  http --ignore-stdin -f POST "$qb_add" root_folder=false \
       name@"$1" savepath="$2" "$qb_Cookie"
 }
 
