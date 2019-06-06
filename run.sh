@@ -8,7 +8,7 @@
 #--------------------------------------#
 
 #----------import settings-------------#
-ROOT_PATH="$(dirname "$(readlink -f "$ 0")")"
+ROOT_PATH="$(dirname "$(readlink -f "$0")")"
 # use source command run
 [[ $ROOT_PATH == /*bin* ]] && \
 ROOT_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
