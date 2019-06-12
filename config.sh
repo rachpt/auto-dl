@@ -14,9 +14,9 @@ qb_PASSWORD='adminadmin'
 qb_Cookie="$(cat "$ROOT_PATH/qb.cookie" 2>/dev/null)"
 #--------------------------------------#
 # examples
-trorrent='your torrent`s name'
-tracker='tracker.totheglory.im'
-tr_file_path="$ROOT_PATH/add.torrent"
+trorrent='your torrent`s name' # use transmission-show get it
+tracker='tracker.totheglory.im' # 限定站点
+tr_file_path="$ROOT_PATH/add.torrent" # 用于反复添加的种子文件
 null_path="/dev/qb/"
 #--------------------------------------#
 # null file
@@ -24,8 +24,8 @@ null_path="/dev/qb/"
     debug_func "需要输入密码创建特殊文件！！！"
     [[ -d $null_path ]] || sudo mkdir "$null_path"
     echo '请输入当前用户密码！'
-    sudo mknod "${null_path%/}/$torrent" c 1 3
-    sudo chmod 777 "${null_path%/}/$torrent"
+    sudo mknod "${null_path%/}/$torrent" c 1 3 # 创建空设备文件，和/dev/null作用一样
+    sudo chmod 777 "${null_path%/}/$torrent" # 修改权限
 }
 #--------------------------------------#
 

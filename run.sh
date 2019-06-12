@@ -5,8 +5,6 @@
 # Version: 0.1v
 # Date: 2019-06-05
 #
-#--------------------------------------#
-
 #----------import settings-------------#
 ROOT_PATH="$(dirname "$(readlink -f "$0")")"
 # use source command run
@@ -20,7 +18,6 @@ qb_reannounce
 #--------------------------------------#
 if [[ "$1" = "$trorrent" ]]; then
   qbit_webui_cookie
-  local data
   data="$(http --ignore-stdin --pretty=format -bf POST "$qb_lists" sort=added_on reverse=true \
    "$qb_Cookie"|sed -E '/^[ ]*[},]+$/d;s/^[ ]+//;s/[ ]+[{]+//;s/[},]+//g'| \
    grep -B18 -A19 'name":'|sed -E \
