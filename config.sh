@@ -3,7 +3,7 @@
 #
 # Author: rachpt@126.com
 # Version: 0.1v
-# Date: 2019-06-06
+# Date: 2019-06-14
 #
 #--------------------------------------#
 #---authoriz for qbittorrent---#
@@ -21,7 +21,6 @@ null_path="/dev/qb/"
 #--------------------------------------#
 # null file
 [[ -c "${null_path%/}/$torrent" ]] || {
-    debug_func "需要输入密码创建特殊文件！！！"
     [[ -d $null_path ]] || sudo mkdir "$null_path"
     echo '请输入当前用户密码！'
     sudo mknod "${null_path%/}/$torrent" c 1 3 # 创建空设备文件，和/dev/null作用一样
