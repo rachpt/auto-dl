@@ -14,10 +14,10 @@ qb_PASSWORD='adminadmin'
 qb_Cookie="$(cat "$ROOT_PATH/qb.cookie" 2>/dev/null)"
 #--------------------------------------#
 # examples
-trorrent='your torrent`s name' # use transmission-show get it
+torrent="your torrent's name" # use transmission-show get it, double quote
 tracker='tracker.totheglory.im' # 限定站点
 tr_file_path="$ROOT_PATH/add.torrent" # 用于反复添加的种子文件
-null_path="/dev/qb/"
+null_path="/dev/qb/" # 空文件路径，建议自定义，方面后面删除
 #--------------------------------------#
 # null file
 [[ -c "${null_path%/}/$torrent" ]] || {
