@@ -17,11 +17,13 @@ source "$ROOT_PATH/qbittorrent.sh"
 [[ $COUNT -le 0 ]] && exit 0  # 到次数退出
 [[ ${#2} -eq 40 && $2 == $TR_HASH ]] && {
   tr_hash="$2"
+  debug_func "use-tr-hash"
 } || {
   qb_reannounce "$2"
   if [[ "$1" == "$trorrent_name" && "$3" =~ .*${trorrent_tracker}.* ]]; then
     [[ ${#2} -eq 40 ]] && {
       tr_hash="$2"
+      debug_func "update-tr-hash"
       sed -i "s/^TR_HASH=.*/TR_HASH=\"$tr_hash\"/" "$ROOT_PATH/config.sh"
     }
   fi
@@ -29,13 +31,17 @@ source "$ROOT_PATH/qbittorrent.sh"
 [[ $tr_hash ]] && {
   qb_reannounce "$tr_hash"
   sleep 8
+  debug_func "pause-torrent"
   qb_pause_torrent "$tr_hash"
   sleep 4
   qb_reannounce "$tr_hash"
+  debug_func "recheck-torrent"
   qb_recheck_torrent "$tr_hash"
   sleep 8
+  debug_func "restart-torrent"
   qb_resume_torrent "$tr_hash"
   sleep 12
+  debug_func "reannounce-torrent"
   qb_reannounce "$tr_hash"
   ((COUNT--))
   sed -i "s/^COUNT=[0-9]*/COUNT=$COUNT/" "$ROOT_PATH/config.sh"

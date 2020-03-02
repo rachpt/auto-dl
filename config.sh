@@ -58,7 +58,7 @@ TR_HASH=""
     sed -i "s/^TR_HASH=.*/TR_HASH=\"\"/" "$ROOT_PATH/config.sh"
 }
 # 如果有torrent文件，则自动设置需要的参数
-if [[ $torrent_file && ! $trorrent_name && ! $trorrent_tracker]]; then
+if [[ $torrent_file && ! $trorrent_name && ! $trorrent_tracker ]]; then
     [[ -f $torrent_file ]] && torrent_path="$torrent_file" || \
         torrent_path="${ROOT_PATH%/}/$torrent_file"
     tr_name="$($trs "$torrent_path"|grep -m1 Name:|sed 's/Name: *//')"

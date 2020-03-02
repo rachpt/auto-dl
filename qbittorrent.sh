@@ -13,7 +13,7 @@ qb_info="${qb_HOST%/}:$qb_PORT/api/v2/torrents/info"  # 信息
 qb_pause="${qb_HOST%/}:$qb_PORT/api/v2/torrents/pause"  # 暂停
 qb_reans="${qb_HOST%/}:$qb_PORT/api/v2/torrents/reannounce"  # 汇报
 qb_resume="${qb_HOST%/}:$qb_PORT/api/v2/torrents/resume"  # 开始
-qb_recheck"${qb_HOST%/}:$qb_PORT/api/v2/torrents/recheck"  # 重新校验
+qb_recheck="${qb_HOST%/}:$qb_PORT/api/v2/torrents/recheck"  # 重新校验
 #--------------------------------------#
 [[ $ROOT_PATH ]] && {
   qb_Cookie="$(cat "${ROOT_PATH%/}/qb.cookie" 2>/dev/null)"
